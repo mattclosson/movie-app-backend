@@ -74,3 +74,10 @@ class MovieController(Controller):
         movie = Movie.where("id", id).get()
         Movie.where("id", id).delete()
         return movie 
+
+
+    def get_movie_reviews(self):
+        id = self.request.param("id")
+        movie = Movie.find(id)
+        reviews = movie.reviews
+        return reviews

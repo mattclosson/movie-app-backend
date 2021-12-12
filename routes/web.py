@@ -10,6 +10,12 @@ ROUTES = [
         Get("/@id", "MovieController@show").name("show"),
         Post("/", "MovieController@create").name("create"),
         Put("/@id", "MovieController@update").name("update"),
-        Delete("/@id", "MovieController@destroy").name("destroy")
-    ], prefix="/movies", name="movies")
+        Delete("/@id", "MovieController@destroy").name("destroy"),
+        Get("/@id/reviews", "MovieController@get_movie_reviews").name("get_reviews")
+    ], prefix="/movies", name="movies"),
+    RouteGroup([ 
+        Get("/", "ReviewController@index").name("index"),
+        Post("/", "ReviewController@create").name("create"),
+        Get("/@id", "ReviewController@show").name("show")
+    ], prefix="/reviews", name="reviews"),
 ]
