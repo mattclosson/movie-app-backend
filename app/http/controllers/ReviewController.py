@@ -30,6 +30,7 @@ class ReviewController(Controller):
          ex. Get().route("/create", MovieController)
         """
         body = self.request.input("body")
+        rating = self.request.input("rating")
         movie_id = self.request.input("movie_id")
-        review = Review.create(body=body, movie_id=movie_id)
+        review = Review.create(body=body, rating=rating, movie_id=movie_id)
         return review
