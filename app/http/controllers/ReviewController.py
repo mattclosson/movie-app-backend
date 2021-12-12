@@ -34,3 +34,23 @@ class ReviewController(Controller):
         movie_id = self.request.input("movie_id")
         review = Review.create(body=body, rating=rating, movie_id=movie_id)
         return review
+
+    def update(self):
+        """Edit an existing resource listing
+        ex. Post target to update new Model
+            Post().route("/update", MovieController)
+        """
+        body = self.request.input("body")
+        rating = self.request.input("rating")
+        movie_id = self.request.input("movie_id")
+        Review.where("id", id).update(body=body, rating=rating, movie_id=movie_id)
+        return Review.where("id", id).get()
+
+    def destroy(self):
+        """Delete an existing resource listing
+        ex. Delete().route("/destroy", MovieController)
+        """
+        id = self.request.param("id")
+        review = Review.where("id", id).get()
+        Review.where("id", id).delete()
+        return review 

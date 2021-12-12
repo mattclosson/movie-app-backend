@@ -16,6 +16,8 @@ ROUTES = [
     RouteGroup([ 
         Get("/", "ReviewController@index").name("index"),
         Post("/", "ReviewController@create").name("create"),
-        Get("/@id", "ReviewController@show").name("show")
+        Get("/@id", "ReviewController@show").name("show"),
+        Put("/@id", "ReviewController@update").name("update"),
+        Delete("/@id", "ReviewController@destroy").name("destroy")
     ], prefix="/reviews", name="reviews"),
 ]
